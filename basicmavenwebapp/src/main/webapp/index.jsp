@@ -1,5 +1,10 @@
+<!DOCTYPE html>
 <html>
-<body>
-<h2>Hello Testazzo!</h2>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Http Servlet Demo</title>
+  </head>
+  <body>
+    <a href="Hello">Click to call Servlet</a>
+  </body>
 </html>
