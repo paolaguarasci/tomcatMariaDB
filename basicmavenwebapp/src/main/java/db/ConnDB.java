@@ -6,6 +6,7 @@ import java.util.Map;
 public class ConnDB {
   public static Map<String, String> getEnv() {
     Map<String, String> map = new HashMap<String, String>();
+    map.put("url", System.getenv("MYSQL_URL"));
     map.put("user", System.getenv("MYSQL_USER"));
     map.put("pass", System.getenv("MYSQL_PASSWORD"));
     map.put("root_pass", System.getenv("MYSQL_ROOT_PASSWORD"));
