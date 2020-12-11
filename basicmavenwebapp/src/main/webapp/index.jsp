@@ -5,6 +5,7 @@
     <title>Http Servlet Demo</title>
   </head>
   <body>
-    <a href="Hello">Click to call Servlet</a>
+    <h1>Servlet di test</h1>
+    <a href="hello">Accesso al db</a>
   </body>
 </html>
