@@ -1,5 +1,5 @@
 db:
-  image: mysql:latest
+  image: mysql:10.5.8
   environment:
     MYSQL_ROOT_PASSWORD: nimda
     MYSQL_DATABASE: example_db
@@ -11,7 +11,7 @@ db:
    - ./db:/docker-entrypoint-initdb.d
 
 web:
-  image: tomcat:latest
+  image: tomcat:jdk15
   # Environment variables do not appear to be getting loaded the first time Tomcat starts!
   environment:
     JDBC_URL: jdbc:mysql://db:3306/example_db?connectTimeout=0&amp;socketTimeout=0&amp;autoReconnect=true
