@@ -1,39 +1,25 @@
-version: '3.7'
+db:
+  image: mysql:latest
+  environment:
+    MYSQL_ROOT_PASSWORD: nimda
+    MYSQL_DATABASE: example_db
+    MYSQL_USER: example_db_user
+    MYSQL_PASSWORD: example_db_pass
+#  ports:
+#    - "3306:3306"
+  volumes:
+   - ./db:/docker-entrypoint-initdb.d
 
-services:
-  bgs:
-    container_name: j2ee
-    image: tomcat:jdk15
-    depends_on:
-      - "database"
-    volumes:
-      - "./resources:/opt/bgs/resources"
-      #- "./target/ROOT.war:/opt/jboss/wildfly/standalone/deployments/bgStudio.war"
-      - "./tomcat/webapps/bgStudio.war:/usr/local/tomcat/webapps/bgStudio.war"
-    networks:
-      - bgs_net
-    ports:
-      - "8080:8080"
-    environment:
-      BG_LOCAL_FOLDER: /opt/bgs
-      BG_JDBC_DRIVER: com.mysql.jdbc.Driver
-      BG_JDBC_URL: jdbc:mysql://database:3306/bg?autoReconnect=true&autoReconnectForPools=true
-      BG_JDBC_USER: root
-      BG_JDBC_PASSWORD: root
-
-  database:
-    container_name: database
-    image: mariadb
-    networks:
-      - bgs_net
-    volumes:
-      - "./resources/database:/docker-entrypoint-initdb.d"
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: bg
-
-volumes:
-  bgs_volume:
-
-networks:
-  bgs_net:
+web:
+  image: tomcat:latest
+  # Environment variables do not appear to be getting loaded the first time Tomcat starts!
+  environment:
+    JDBC_URL: jdbc:mysql://db:3306/example_db?connectTimeout=0&amp;socketTimeout=0&amp;autoReconnect=true
+    JDBC_USER: example_db_user
+    JDBC_PASS: example_db_pass
+  ports:
+   - "80:8080"
+  volumes:
+   - ./tomcat/webapps:/usr/local/tomcat/webapps
+  links:
+    - db
