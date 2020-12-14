@@ -4,13 +4,13 @@
   <display-name>Archetype Created Web Application</display-name>
 
   <servlet>
-    <servlet-name>simpleServlet</servlet-name>
-    <servlet-class>it.artemat.test.SimpleServlet</servlet-class>
+    <servlet-name>SimpleServlet</servlet-name>
+    <servlet-class>SimpleServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>simpleServlet</servlet-name>
+    <servlet-name>SimpleServlet</servlet-name>
     <url-pattern>/hello</url-pattern>
   </servlet-mapping>
 
