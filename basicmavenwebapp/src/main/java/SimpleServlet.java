@@ -26,7 +26,7 @@ public class SimpleServlet extends HttpServlet {
             ResultSet rs = stmt.executeQuery("select * from utente");
             while (rs.next())
                 out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3) + " "
-                        + rs.getString(4) + "  " + rs.getString(5));
+                        + rs.getString(4) + "  " + rs.getString(5)+"<br/>");
             con.close();
         } catch (Exception e) {
             e.printStackTrace();
