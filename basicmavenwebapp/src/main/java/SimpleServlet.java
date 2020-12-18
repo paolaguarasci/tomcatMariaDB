@@ -18,12 +18,12 @@ public class SimpleServlet extends HttpServlet {
             throws ServletException, IOException {
         Connection con = null;
         PrintWriter out = response.getWriter();
+        out.println("<h1>RESPONSE</h1>");
 
         try {
             con = ConnDB.initializeDatabase();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select * from utente");
-            out.println("<h1>RESPONSE</h1>");
             while (rs.next())
                 out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3) + " "
                         + rs.getString(4) + "  " + rs.getString(5));
