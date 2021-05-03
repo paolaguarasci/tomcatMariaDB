@@ -1,4 +1,4 @@
-FROM maven:3.8.1-adoptopenjdk-15-openj9 as target
+FROM maven:3.8.1-adoptopenjdk-15 as target
 COPY basicmavenwebapp/settings-docker.xml /usr/share/maven/ref/
 COPY basicmavenwebapp/pom.xml /basicmavenwebapp/pom.xml
 COPY basicmavenwebapp/src/ /basicmavenwebapp/src
