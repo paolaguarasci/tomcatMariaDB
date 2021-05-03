@@ -12,3 +12,5 @@ RUN mvn -B -f /basicmavenwebapp/pom.xml -s /usr/share/maven/ref/settings-docker.
 
 FROM tomcat:jdk15
 COPY --from=target /basicmavenwebapp/target /usr/local/tomcat/webapps/
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
