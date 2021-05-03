@@ -23,7 +23,7 @@ public class ConnDB {
         // Database Connection 
         Map<String, String> envVars = getEnv();
         String dbDriver = "org.mariadb.jdbc.Driver";
-        String dbURL = "jdbc:mariadb://mariadb:3306/"; 
+        String dbURL = "jdbc:mariadb://database:3306/"; 
         // Database name to access 
         String dbName = envVars.get("db"); 
         String dbUsername = envVars.get("user"); 
