@@ -1,4 +1,4 @@
-FROM maven:latest as target
+FROM maven:3.8.1-adoptopenjdk-15-openj9 as target
 COPY basicmavenwebapp/settings-docker.xml /usr/share/maven/ref/
 COPY basicmavenwebapp/pom.xml /basicmavenwebapp/pom.xml
 COPY basicmavenwebapp/src/ /basicmavenwebapp/src
@@ -10,7 +10,7 @@ RUN mvn -B -f /basicmavenwebapp/pom.xml -s /usr/share/maven/ref/settings-docker.
 # COPY /basicmavenwebapp /basicmavenwebapp
 # RUN mvn dependency:resolve && mvn package
 
-FROM tomcat:latest
+FROM tomcat:9.0.45-jdk15-adoptopenjdk-openj9
 COPY --from=target /basicmavenwebapp/target /usr/local/tomcat/webapps/
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
